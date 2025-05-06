@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Date Range Tracker with Login</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <h2 id="welcome">Welcome</h2>
+
+  <div id="auth">
+    <h3>Login or Register</h3>
+    <input type="text" id="username" placeholder="Username"><br>
+    <input type="password" id="password" placeholder="Password"><br>
+    <button onclick="register()">Register</button>
+    <button onclick="login()">Login</button>
+    <p id="authMessage" style="color:red;"></p>
+  </div>
+
+  <div id="app" class="hidden">
+    <p>Logged in as: <span id="currentUser"></span> <button onclick="logout()">Logout</button></p>
+
+    <div class="date-grid">
+      <div class="label">From date:</div>
+      <div class="label">To date:</div>
+    </div>
+    
+    <div id="dateRanges" class="date-grid"></div>
+
+    <button onclick="countTotalDays()">Count</button>
+    <button onclick="resetDateRanges()">Reset</button>
+    <button onclick="saveResult()">Save Result</button>
+
+    <p id="totalDays">Total Days: 0</p>
+
+    <div class="saved-results">
+      <h4>Saved Results</h4>
+      <div id="savedList"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
