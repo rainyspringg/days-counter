@@ -223,3 +223,32 @@ function resetDateRanges() {
 window.onload = () => {
   document.getElementById('auth').classList.remove('hidden');
 };
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Use more reliable date format (month is 0-indexed)
+    const targetDate = new Date(2024, 4, 1); // May 1, 2024
+    const timer = document.getElementById('timer');
+    
+    function updateCounter() {
+        const currentDate = new Date();
+        const difference = targetDate - currentDate;
+        
+        if (difference <= 0) {
+            timer.innerHTML = "The event has started!";
+            return;
+        }
+        
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+        
+        document.getElementById('days').innerHTML = days;
+        document.getElementById('hours').innerHTML = hours;
+        document.getElementById('minutes').innerHTML = minutes;
+        document.getElementById('seconds').innerHTML = seconds;
+    }
+    
+    updateCounter();
+    setInterval(updateCounter, 1000);
+});
